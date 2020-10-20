@@ -1,0 +1,86 @@
+h1, p {
+  background-color: #DDE0E3;  /* light gray */
+}
+
+em, strong {
+  background-color: #B2D6FF;  /* light blue */
+  display: inline;            /* This is the default for <em> and <strong> */
+}
+
+h1 {
+  padding: 50px;
+  border: 1px solid #5D6063; /*border: (SIZE - STYLE - COLOR)*/
+  /* there are -top, -bottom, -left and -right variants for the border property
+  border-bottom: 1px solid #5D6063; */
+}
+
+p {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* or we can use one line of CSS with two values to the padding propertys
+  padding: 20px 10px; (vertical - horizontal) */
+  /* or we can use four values to the padding propertys
+  padding: 20px 0 20px 10px; (top - right - bottom - left) */
+  margin-bottom: 50px;
+}
+
+/* Margins and padding can accomplish the same thing in a lot of situations,
+making it difficult to determine which one is the “right” choice.
+
+    1. The padding of a box has a background, while margins are always transparent.
+    2. Padding is included in the click area of an element, while margins aren’t.
+    3. Margins collapse vertically, while padding doesn’t (we’ll discuss this
+       more in the next section). */
+
+strong {
+  margin: 50px;
+}
+
+div {
+  color: #FFF;
+  background-color: #5995DA;
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #5D6063;
+  border-radius: 5px;
+  width: 200px;
+  box-sizing: border-box;
+  /* box-sizing property let you change how the width of a box is calculated.
+  This forces the actual width of the box to be 200px including padding and
+  borders. That means that the content width is now determined automatically.
+  border-box is considered a best practice among modern web developers.*/
+  margin: 20px auto; /*Vertical Horizontal*/
+  /* when you set the left and right margin of a block-level element to auto, it
+  will center the block in its parent element.
+  This only works on blocks that have an explicit width defined on them.*/
+}
+
+body {
+  text-align: center;
+  /* aligns the content and inline boxes inside of a block-level element. This
+  will only align the content inside of our block boxes and not the blocks
+  themselves. This is different to aligning block boxes.
+  There are 3 methods for horizontally aligning block-level elements:
+  1- "auto-margins" for center alignment
+  2- "floats" for left/right alignment
+  3- flexbox for complete control over alignment. */
+}
+
+* {                         /* Resetting Styles */
+  margin: 0;                /* It's a good idea to override default style (from
+  padding: 0;                  the browser) to a predictable value using the
+  box-sizing: border-box;      "universal" CSS selector (*). */
+}
+
+/*
+  Sumary:
+
+    1. Everything is a box.
+    2. Boxes can be inline or block-level.
+    3. Boxes have content, padding, borders, and margins.
+    4. They also have seemingly arbitrary rules about how they interact.
+    5. Mastering the CSS box model means you can lay out most web pages.
+*/
