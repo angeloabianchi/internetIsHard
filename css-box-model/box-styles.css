@@ -70,9 +70,9 @@ body {
 }
 
 * {                         /* Resetting Styles */
-  margin: 0;                /* It's a good idea to override default style (from
-  padding: 0;                  the browser) to a predictable value using the
-  box-sizing: border-box;      "universal" CSS selector (*). */
+  margin: 0;                /* It's a good idea to override default style (from */
+  padding: 0;               /* the browser) to a predictable value using the */
+  box-sizing: border-box;   /* "universal" CSS selector (*). */
 }
 
 /*

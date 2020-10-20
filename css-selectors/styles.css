@@ -1,0 +1,153 @@
+/*
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*/
+
+/* Class Selector let you apply CSS stles to a specific HTML element. They let
+you differentiate between HTML elements of the same type, like when we had two
+<div> elements, but only wanted to style one of them. Two things required:
+1. A class attribute on the HTML element in question;
+2. Amatching CSS class selector in your stylesheet.
+*/
+
+.page {
+  width: 600px;
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.synopsis {
+  color: #7E8184;
+  font-style: italic;
+}
+
+.synopsis em {
+  font-style: normal;
+  /* this is what 'descendant selectors' are for. They let you target only those
+     elements that are inside of another element.
+     Descendant selectors aren't limited to class selector. You can combine any
+     other group of selectors this way. Ex:
+
+     h1 em {
+      some other style
+     } */
+}
+
+.button:link,       /* Notice the new :link and :visited pseudo-classes in the selector.*/
+.button:visited {   /* Without it, our color would not override the browser’s default a:link style. */
+
+  display: block;   /* <-- change the inline element to block element */
+  text-decoration: none;
+  color: #FFF;
+  background-color: #5995DA;    /* Blue */
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #5D6063;    /* Dark gray */
+  border-radius: 5px;
+  width: 200px;
+  margin: 20px auto;
+}
+
+.button:hover,
+.button:visited:hover {
+  color: #FFF;
+  background-color: #76AEED;  /* Light blue */
+  /* Notice the new :link and :visited pseudo-classes in the selector. Without
+     it, our color would not override the browser’s default a:link style. */
+}
+
+.button:active,
+.button:visited:active {
+  color: #FFF;
+  background-color: #5995DA;  /* Blue */
+  /* Both our buttons will be a lighter blue on hover. Finally, let’s make it a
+  little darker when the user presses the mouse down with the :active pseudo-class */
+}
+
+
+/* .call-to-action {  <-- substituido por as pseudo-classes abaixo
+  font-style: italic;
+  background-color: #EEB75A; */
+  /* This element has two separate classes (1. button and 2. call-to-action).
+  Styles shared by both buttons can live in the .button class, and styles
+  specific to the second button reside in the .call-to-action class.
+  The .call-to-action needs to be writen after the .button rule. */
+/* } */
+
+
+/* Our second button supposed to have a yellow background, but we broke it with the code above.
+Below we fixed it applying some pseudo-classes to our .call-to-action rule (foi
+substituida por essas pseudo-classes). */
+
+.call-to-action:link,
+.call-to-action:visited {
+  font-style: italic;
+  background-color: #EEB75A;     /* Yellow */
+}
+
+.call-to-action:hover,
+.call-to-action:visited:hover {
+  background-color: #F5CF8E;     /* Light yellow */
+}
+
+.call-to-action:active,
+.call-to-action:visited:active {
+  background-color: #EEB75A;     /* Yellow */
+}
+
+
+
+/* BASIC LINK STYLES */
+/* Pseudo-classes begin with a colon followed by the name of the desired class.
+The most common link pseudo-classes are as follows:
+
+    :link – A link the user has never visited.
+    :visited – A link the user has visited before.
+    :hover – A link with the user’s mouse over it.
+    :active – A link that’s being pressed down by a mouse (or finger).
+*/
+
+a:link {
+  color: blue;
+  text-decoration: none;
+}
+a:visited {
+  color: purple;
+}
+a:hover {
+  color: aqua;
+  text-decoration: underline;
+}
+a:active {
+  color: red;
+}
+
+
+/* PSEUDO-CLASSES FOR STRUCTURE */
+p:last-of-type {
+  margin-bottom:50px;
+  /* Selects the final element of a particular type in its parent element. At
+  the example above, the type was <p> (paragraph). */
+}
+
+p:first-of-type {
+  color: #7E8184;
+  font-style: italic;
+  /* Selects the first element of a ... */
+}
+
+
+
+/* ID SELECTOR */
+/* They work pretty much the same way, except you can only have one element with
+ the same ID per page, which means you can’t reuse styles at all. Instead of a
+ class attribute, they require an id attribute on whatever HTML element you’re
+ trying to select. DONT'T USE BECAUSE CLASS SELECTORS ARE MORE CLEAR FOR CODING. */
+ #button-2 {
+  color: #5D6063;  /* Dark gray */
+}
