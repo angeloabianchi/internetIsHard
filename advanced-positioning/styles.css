@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* ADVANCED POSITIONING */
+/* The other three types of positioning are “relative”, “absolute”, and “fixed”.
+ Each of them let you manually position elements using specific coordinates,
+ opposed to the more semantic options in flexbox and floats.
+The vast majority of elements on a web page should be laid out according to the
+static flow of the page. These other positioning schemes come into play when you
+want to do more advanced things like tweak the position of a particular element
+or animate a UI component without messing up the surrounding elements.
+ */
+
+
+body {
+  height: 1200px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.example {
+  display: flex;
+  justify-content: space-around;
+
+  width: 800px;
+  margin: 50px 0;
+  background-color: #D6E9FE;
+}
+
+.item img {
+  display: block;
+}
+
+
+/* POSITIONED ELEMENTS */
+/* The position: property lets you alter the positioning scheme of a particular
+element. It default value is static and all the other are called a "positioned
+element".
+
+
+/* RELATIVE POSITIONING */
+/* Move elements around relative to where they would normally appear in the
+static flow of the page.
+These properties accept negative values.*/
+
+.item-relative {
+  position: relative;     /* <-- This line makes it a positioned element. */
+  top: 30px;              /* <-- This coordinate property define how far it's offset from its static prosition */
+  left: 30px;             /* <-- Other coordinate property */
+  /* the others properties are right: and bottom: */
+}
+
+
+/* ABSOLUTE POSITIONING */
+/* Is just like relative positioning, but the offset is relative to the entire browser
+window instead of the original position of the element. */
+/* Other interesting effect of absolute is that it completely removes an element
+ from the normal flow of the page. */
+
+.item-absolute {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+
+/* (RELATIVELY) ABSOLUTE POSITIONING */
+/* Absolute positioning becomes much more practical when it’s relative to some
+other element that is in the static flow of the page. */
+/* if we change .item-absolute’s parent element to be relatively positioned, it
+should appear in the top-left corner of that element instead of the browser window. */
+
+.absolute {
+  position: relative; /* Notice how we didn’t specify any offset coordinates for .absolute. */
+}
+
+
+/* FIXED POSITIONING */
+/* has a lot in common with absolute positioning: it’s very manual, the element
+is removed from the normal flow of the page, and the coordinate system is relative
+to the entire browser window. The key difference is that fixed elements don’t
+scroll with the rest of the page. */
+/* This lets you create navigation bars that always stay on the screen */
+
+.item-fixed {
+  position: fixed;  /* Try scrolling the page, and you’ll discover that it doesn’t */
+  bottom: 0;        /* move with the rest of the elements on the page */
+  right: 0;
+}
+
+
+/* POSITIONED ELEMENTS FOR ANIMATION */
+/* Animation is one of the primary use cases for relative and absolute positioning.
+These advanced positioning schemes allow JavaScript to move elements around while
+avoiding any kind of interaction with surrounding elements. */

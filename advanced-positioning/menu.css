@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*POSITIONED ELEMENTS FOR MENUS */
+/* Fixed positioning will let us make the menu stick to the top of the page, and
+relative positioning will give us an anchor for the absolutely positioned dropdown. */
+
+
+body {
+  height: 1200px;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: #5D6063;
+}
+
+a:link,
+a:visited {
+  color: #5D6063;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 50px;
+  background: #D6E9FE;
+}
+
+/* INLINE MENU ITEMS */
+/* Despite being marked up as unordered lists, the navigation menus for most
+websites don’t actually look like a list. We can fix this by making the list
+items inline boxes instead of block boxes via the display property. */
+
+.menu {
+  margin-top: 15px;
+}
+
+.menu > li {            /* We have to use child selectors here instead of descendant */
+  display: inline;      /* selectors because we only want to select <li> elements */
+  margin-right: 50px;   /* that are directly inside the .menu. */
+}
+
+.menu > li:last-of-type {
+  margin-right: 0;
+}
+
+
+/* SUBMENUS */
+/* Use Relatively Absolute Positioning */
+
+.dropdown:hover .features-menu {    /* <-- PSEUDO-CLASSE TO USE DROPDOWN. Antes era só .features-menu */
+  display: flex;
+  flex-direction: column;
+  background: #B2D6FF;
+  border-radius: 5px;
+  padding-top: 60px;
+
+  position: absolute;      /* Add these */
+  top: -25px;
+  left: -30px;
+
+  z-index: 1;   /* The explicanation below */
+}
+
+.features-menu li {
+  list-style: none;
+  border-bottom: 1px solid #FFF;
+
+  padding: 0 40px 10px 20px;
+  margin: 10px;
+}
+
+.features-menu li:last-of-type {
+  border-bottom: none;
+}
+
+
+/* The submenu resides in <li class='dropdown'>. Turning that into a positioned
+element should change the coordinate system used by our absolutely positioned
+.features-menu: */
+
+.dropdown {
+  position: relative;
+}
+
+
+/* Z-INDEX */
+/* The z-index property lets you control the depth of elements on the page. If
+you think of your screen as 3D space, negative z-index values go farther into
+the page, and positive ones come out of the page. */
+/* the .features-menu element needs to have a lower z-index than the Features label.
+We conveniently wrapped the Features label in a <span>, allowing us to style it
+via a child selector, like so: */
+
+.dropdown > span {
+  z-index: 2;
+  position: relative;   /* This is important, because only positioned elements pay attention to their z-index property */
+  cursor: pointer;      /* cursor property to make it look like a link when the user hovers over the label. */
+}
+
+
+/* PSEUDO-CLASSES FOR DROPDOWN MENUS */
+/* We can use that :hover pseudo-class from the CSS Selectors to turn our submenu
+into an interactive dropdown. */
+
+.features-menu {
+  display: none;          /* The other .features-menu above were updated with the pseudo-classe */
+  /* Setting display to none makes an element completely disappear. By overriding
+  that value with flex in the :hover rule, we’re effectively telling the browser
+  to show the .features-menu again. */
+}
+
+
+/* SUMMARY */
+/* Relative positioning was for tweaking the position of an element without
+affecting its surrounding boxes. Absolute positioning took elements out of the
+static flow of the page and placed them relative to the browser window, while
+relatively absolute positioning allowed us to hook back into the static flow of
+the page. Finally, fixed positioning let us make elements that didn't scroll
+with the rest of the page.
+
+We used these new positioning techniques to create a rather sophisticated navigation
+menu. If it felt complicated, that’s cause it was. But don’t worry, you shouldn’t
+feel pressure to memorize the HTML and CSS behind our menu. Your goal should be
+to have the ability to reference this example three months from now and understand
+what all those position: relative; and position: absolute; declarations are doing.
+
+This menu was also a pretty good example of how starting with the HTML markup
+makes life a lot easier. First, we created the semantic structure we wanted.
+Then, we wrote some fancy CSS to position the boxes right where we wanted them.
+Whenever you’re looking at a complicated mockup and not sure where to start,
+this is good way to approach the problem. */
