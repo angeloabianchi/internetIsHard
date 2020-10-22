@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <title>Semantic HTML</title>
+  </head>
+  <body>
+
+<!-- 4. HEADERS -->
+<!-- not to be confused with headings (the <h1>-<h6> elements).
+     It denotes introductory content for a section, article, or entire web page.
+     “Introductory content” can be anything from your company’s logo to navigational
+     aids or author information.
+     It’s a best practice to wrap a website’s name/logo and main navigation in a <header> -->
+
+    <header>
+      <h1>Interneting Is Easy!</h1>
+
+  <!-- 3. NAV ELEMENTS -->
+  <!-- Lets you mark up the various navigation sections of your website. This goes
+       for the main site navigation, links to related pages in a sidebar, tables
+       of content, and pretty much any group of links.
+       It’s possible to include multiple <nav> elements on a single page if you
+       have different sets of related links.-->
+      <nav>
+        <ul>
+          <li><a href='#'>Home</a></li>
+          <li><a href='#'>About</a></li>
+          <li><a href='#'>Blog</a></li>
+          <li><a href='#'>Sign Up</a></li>
+        </ul>
+      </nav>
+    </header>
+
+
+<!-- 1. ARTICLES -->
+<!-- It should only wrap content that can be plucked out of your page and
+     distributed in a completely different context.
+     <article>’s are essentially mini web pages in your HTML document. They have
+     their own headers, footers, and document outline that are completely isolated
+     from the rest of your site. -->
+<!-- MULTIPLE ARTICLE ELEMENTS: A good example is a page that displays a bunch
+     of blog posts.Each one of them can be wrapped in a separate set of <article>
+     tags -->
+    <article class="">
+      <h1>Semantic HTML</h1>
+      <p>By Troy McClure. Published January 3rd</p>
+      <p>This is an example web page explaining HTML5 semantic markup.</p>
+
+
+<!-- 2. SECTIONS -->
+<!-- The <section> element is sort of like an <article>, except it doesn’t need
+     to make sense outside the context of the document. Think of <section> as an
+     explicit way to define the sections in a document outline.
+     you need a container to wrap a section for layout purposes, and it makes
+     sense to use the more descriptive <section> element over a generic <div>.-->
+      <section>
+        <h2>The Document Outline</h2>
+        <p>HTML5 includes several “sectioning content” elements that
+           affect the document outline.</p>
+
+        <h3>Headers</h3>
+        <p>The <code>&lt;header&gt;</code> element is one such sectioning
+           element.</p>
+
+        <h3>Footers</h3>
+        <p>And so is the <code>&lt;footer&gt;</code> element.</p>
+
+        <!-- <SECTION> AND THE DOCUMENT OUTLINE -->
+        <!-- By adding those <section> elements, we’re telling the document
+        outline that it should be defined by the nesting structure of the
+        <section> elements instead of the heading levels. This basically means
+        that each <section> can have its own set of <h1> through <h6> headings
+        that are independent of the rest of the page.
+        You shouldn’t use the <section> element to manipulate the document outline
+        in this way because browsers, screen readers, and some search engines don’t
+        properly interpret the effect of <section> on the document outline.-->
+        <section>
+          <h2>Inline Semantic HTML</h2>
+          <p>The <code>&lt;time&gt;</code> element is semantic, but it’s not
+             sectioning content.</p>
+        </section>
+
+      </section>
+
+<!-- 5. FOOTER -->
+<!-- footers are basically the same as headers, except they generally come at
+end of an article/website opposed to the beginning. Common use cases include
+things like copyright notices, footer navigation, and author bios at the end of
+blog posts.
+Footers behave the same as <header> in that they’re associated with the nearest
+sectioning element.-->
+      <footer>
+        <p>This fake article was written by somebody at InternetingIsHard.com, which
+           is a pretty decent place to learn how to become a web developer.</p>
+      </footer>
+
+    </article>
+
+    <footer>
+      <p>&copy; 2017 InternetingIsHard.com</p>
+    </footer>
+
+  </body>
+</html>
+
+
+<!-- SUMMARY -->
+<!-- To understand why this is important, we really have to empathize with the
+machines reading our content. Before semantic HTML was a thing, developers used
+a bunch of <div>’s with different and somewhat arbitrary class names to define
+the structure of their pages. For example, all of the following elements are
+logical names for a site-wide header:
+
+<div class='main-menu'>
+<div class='top-nav'>
+<div class='top-banner'>
+<div class='header'>
+
+
+ Machine readers used to have to make sense of all the above <div>’s and more.
+ The new semantic HTML elements we learned in this chapter are like standardized
+ versions of these class names. Now, they can simply look for a <header> element.
+ We can still add whatever class name we want to it for styling purposes, but search
+ engines and screen readers now have a predictable way to identify headers across
+ every HTML5 website on the Internet. -->
