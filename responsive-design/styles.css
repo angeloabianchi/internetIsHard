@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* BASE STYLES - which should apply to all layouts (mobile, tablet and desktop) */
+.page {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  background-color: #5995DA;
+  height: 80px;
+}
+
+.header {
+  background-color: #B2D6FF;
+}
+
+.content {
+  background-color: #EAEDF0;
+  height: 600px;
+}
+
+.sign-up {
+  background-color: #D6E9FE;
+}
+
+.feature-1 {
+  background-color: #F5CF8E;
+}
+
+.feature-2 {
+  background-color: #F09A9D;
+}
+
+.feature-3 {
+  background-color: #C8C6FA;
+}   /* END OF THE BASE STYLE - this base style need to be above the @media rules and below universal selector rule (*) that resets our margin and padding */
+
+
+/* 1. CSS MEDIA QUERIES */
+/* Media queries let us present the same HTML content as distinct CSS layouts.
+This means that whenever we add a new article or edit a typo in our HTML, those
+changes are automatically reflected in both mobile and widescreen layouts.*/
+/* Media queries always begin with the @media “at-rule” followed by some kind of
+conditional statement, and then some curly braces. Inside the curly braces, you
+put a bunch of ordinary CSS rules. */
+/* The only screen “media type” means that the contained styles should only be
+applied to devices with screens (opposed to printed documents).
+The min-width and max-width parts are called “media features”, and they specify
+the device dimensions you’re targeting. */
+
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+  body {
+    background-color: #F09A9D; /* Red */
+  }
+  /* 3. MOBILE-FIRST DEVELOPMENT */
+  /* It’s always a good idea to start with the mobile layout and work your way up
+  to the desktop version. */
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  body {
+    background-color: #F5CF8E; /* Yellow */
+  }
+/* 4. TABLET LAYOUT */
+/* On the tablet layout, adjust the widths of the flex items to be half the screen and
+flex-wrap will take care of the rest. We want this behavior to apply to tablet-sized screens,
+so it needs to go into an @media rule. */
+  .sign-up,
+  .feature-1,
+  .feature-2,
+  .feature-3 {
+    width: 50%;
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  body {
+    background-color: #B2D6FF; /* Blue */
+  }
+  /* 5. DESKTOP LAYOUT */
+  /* We don’t want our web page to expand endlessly, so we’re going to give it a
+  fixed width and center it with auto-margins. */
+  .page {
+    width: 960px;
+    margin: 0 auto;
+  }
+  .feature-1,
+  .feature-2,
+  .feature-3 {
+    width: 33.3%;
+  }
+  .header {
+    height: 400px;
+  }
+  /* our desktop layout calls for some reordering: the Sign Up and Content boxes
+  should appear underneath all the Feature sections.
+  With flexbox’s order property, it’s just a few lines of CSS */
+  .sign-up {
+    height: 200px;
+    order: 1;
+  }
+  .content {
+    order: 2;
+  }
+}
+
+
+/* 2. There are two concepts that you must understand as a developer:
+
+    1. A “fluid” layout is one that stretches and shrinks to fill the width of the
+    screen, just like the flexible boxes we covered a few chapters ago.
+    2. A “fixed-width” layout is the opposite: it has the same width regardless of
+    the screen dimensions (we created one of these in the CSS Selectors chapter). */
+
+/* Start with the base styles that apply to your entire site, then tweak them
+for various device widths by selectively applying CSS rules with @media. */
+
+
+
+/* SUMMARY */
+/* Believe it or not, that’s actually all you need to know to create responsive
+websites. If we boil it down, we’re really only concerned with three things:
+
+    The responsive design (the mockups for each layout)
+    CSS rules for implementing each of those layouts
+    Media queries for conditionally applying those CSS rules
+
+We started this chapter by learning about the difference between fluid layouts
+and fixed-width layouts. Then, we went on to create a mobile-first stylesheet
+that used media queries to build tablet and desktop layouts on top of a shared
+set of base styles. Finally, we disabled the default viewport zoom behavior of
+mobile browsers. */
