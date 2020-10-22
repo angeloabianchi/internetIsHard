@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  background-color: #5995DA;
+  height: 80px;
+}
+
+.header {
+  background-color: #B2D6FF;
+}
+
+.content {
+  background-color: #EAEDF0;
+  height: 600px;
+}
+
+.sign-up {
+  background-color: #D6E9FE;
+}
+
+.feature-1 {
+  background-color: #F5CF8E;
+}
+
+.feature-2 {
+  background-color: #F09A9D;
+}
+
+.feature-3 {
+  background-color: #C8C6FA;
+}
+
+
+/* 1. RESPONSIVE SVG IMAGES */
+/* Since they’re vector-based, SVGs avoid the screen resolution problems.
+To get a fluid image in Chrome, we need to tell the illustration to always
+fill the width of its container. */
+/* This fixes the mobile layout, but now the desktop version is huge. To fix that,
+we can use an inline style at the HTML document in the .content div (style='max-width: 500px') */
+
+/* UTILIZADO EM 1.
+.illustration {
+  width: 100%;
+}
+*/
+
+
+/* 2. JPG IMAGES */
+/* PNG, GIF, and JPG images are “raster images”, meaning that they are defined
+pixel-by-pixel instead of with vectors. As a result, they are much more sensitive
+to screen resolution than SVGs. Changing our illustration.svg with a PNG file in
+the .content div and adding this CSS rules below, we fix the problem. */
+.illustration img {
+  width: 100%;
+  display: block;
+}
+
+
+/* UTILIZADO EM 4. We need to make some changes to position our new header image
+correctly. */
+.header {
+  height: auto;
+  justify-content: inherit;
+  align-items: inherit;
+}
+
+.photo img {
+  width: 100%;
+  display: block;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+  body {
+    background-color: #F09A9D; /* Red */
+  }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  .sign-up,
+  .feature-1,
+  .feature-2,
+  .feature-3 {
+    width: 50%;
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  .page {
+    width: 960px;
+    margin: 0 auto;
+  }
+  .feature-1,
+  .feature-2,
+  .feature-3 {
+    width: 33.3%;
+  }
+  .header {
+    height: 400px;
+  }
+  .sign-up {
+    height: 200px;
+    order: 1;
+  }
+  .content {
+    order: 2;
+  }
+}
+
+
+/* SUMMARY */
+/*Responsive images may seem rather complicated, but there’s really only two
+problems we’re trying to solve:
+
+    1. Make images fit into mobile layouts while respecting their intrinsic size
+    2. Avoid making the user download unnecessarily large image files
+
+We accomplished the former by making images always stretch to fill 100% of their
+container while limiting their size with an inline max-width style. For the latter,
+we used srcset to optimize for screen resolution, srcset plus sizes to optimize
+for device width, and finally the <picture> element for manual control over which
+image file is displayed. */

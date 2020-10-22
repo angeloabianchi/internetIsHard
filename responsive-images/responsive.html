@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'/>
+    <title>Responsive Design</title>
+    <link rel='stylesheet' href='styles.css'/>
+    <meta name='viewport'
+          content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+  </head>
+  <body>
+    <div class='page'>
+      <div class='section menu'></div>
+
+      <!-- 4. SCREEN WIDTH OPTIMIZATION USING SRCSET -->
+      <!-- we want to optimize larger images based on their final rendered dimensions,
+      not just the device’s screen resolution.
+
+      <div class='section header'>
+        <div class='photo'>
+          <img src='images/photo-small.jpg'
+               srcset='images/photo-big.jpg 2000w,
+                       images/photo-small.jpg 1000w'
+               sizes='(min-width: 960px) 960px,
+                      100vw'/>
+
+           The 2000w tells the browser that the photo-big.jpg file is 2000
+          pixels wide. Likewise, the 1000w means photo-small.jpg has a width of
+          1000 pixels. If you’re wondering about that w character, it’s a special
+          unit used only for this kind of image optimization scenario. -->
+
+
+
+        <!-- 5. ART DIRECTION USING <PICTURE> -->
+        <!-- It lets you optimize layouts by sending completely different images
+        to the user depending on their device.
+        For this, we need the <picture> and <source> elements. The former is
+        just a wrapper, and the latter conditionally loads images based on
+        media queries. -->
+        <div class='section header'>
+          <div class='photo'>
+            <picture>
+              <source media='(min-width: 401px)'
+                      srcset='images/photo-big.jpg'/>
+              <source media='(max-width: 400px)'
+                      srcset='images/photo-tall.jpg'/>
+              <img src='images/photo-small.jpg'/>
+            </picture>
+          </div>
+        </div>
+        <!-- In each <source> element, the media attribute defines when the image
+        should be loaded, and srcset defines which image file should be loaded.
+        The <img/> element is only used as a fallback for older browsers. -->
+      </div>
+
+      <div class='section content'>
+        <!--  UTILIZADO EM 2.
+        <div class='illustration'>
+          <img src='images/illustration-big.png' style='max-width: 500px'/>
+        </div>
+        -->
+
+        <!-- 3. Retina Optimization Using srcset -->
+        <!-- Adding a srcset attribute to our <img/> element lets us present our
+        high-resolution image only to retina devices, falling back to the low-resolution
+        version for standard screens.  -->
+        <div class='illustration'>
+          <img src='illustration-small.png'
+               srcset='images/illustration-small.png 1x,
+                       images/illustration-big.png 2x'
+               style='max-width: 500px'/>
+        </div>
+        <!-- The srcset attribute points to a list of alternative image files,
+        along with properties defining when the browser should use each of them.
+        The 1x tells the browser to display illustration-small.png on
+        standard-resolution screens. The 2x means that illustration-big.png is
+        for retina screens. -->
+      </div>
+
+
+
+      <div class='section sign-up'>
+        <img src='images/sign-up.svg'/>
+      </div>
+      <div class='section feature-1'>
+        <img src='images/feature.svg'/>
+      </div>
+      <div class='section feature-2'>
+        <img src='images/feature.svg'/>
+      </div>
+      <div class='section feature-3'>
+        <img src='images/feature.svg'/>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- Notice how we have multiple copies of our PNG and JPG images (e.g.,
+illustration-big.png and illustration-small.png). We’ll be letting the browser
+pick which one of these it should load depending on the device’s size and screen
+resolution. -->
